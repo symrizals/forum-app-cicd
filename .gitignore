@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+npm-debug.log*
+coverage
+storybook-static
+cypress/videos
+cypress/screenshots
+cypress/downloads
