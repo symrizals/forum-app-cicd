@@ -23,7 +23,7 @@ describe('threadsReducer function', () => {
     const nextState = threadsReducer(initialState, action);
 
     // assert
-    expect(nextState).toEqual(initialState);
+    expect(nextState).toEqual(['SENGAJA-SALAH']);
   });
 
   it('should return the threads when given RECEIVE_THREADS action', () => {
