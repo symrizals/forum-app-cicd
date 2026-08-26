@@ -27,9 +27,10 @@ describe('asyncRegisterUser thunk', () => {
   it('should call api.register with the correct payload when registering success', async () => {
     // arrange
     vi.spyOn(api, 'register').mockResolvedValue({ id: 'user-1', ...fakeRegisterInput });
+    const dispatch = vi.fn();
 
     // action
-    await asyncRegisterUser(fakeRegisterInput)();
+    await asyncRegisterUser(fakeRegisterInput)(dispatch);
 
     // assert
     expect(api.register).toHaveBeenCalledWith(fakeRegisterInput);
@@ -38,8 +39,9 @@ describe('asyncRegisterUser thunk', () => {
   it('should throw an error when registering failed', async () => {
     // arrange
     vi.spyOn(api, 'register').mockRejectedValue(fakeErrorResponse);
+    const dispatch = vi.fn();
 
     // action & assert
-    await expect(asyncRegisterUser(fakeRegisterInput)()).rejects.toThrow(fakeErrorResponse);
+    await expect(asyncRegisterUser(fakeRegisterInput)(dispatch)).rejects.toThrow(fakeErrorResponse);
   });
 });
